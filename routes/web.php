@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +23,14 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::resources([
+    'clients'=> ClientController::class,
+    'invoices'=> InvoiceController::class,
+    'orders'=> OrderController::class,
+    'providers'=> ProviderController::class,
+    'services'=> ServiceController::class,
+
+    ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
