@@ -22,15 +22,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
-
-Route::resources([
-    'clients'=> ClientController::class,
-    'invoices'=> InvoiceController::class,
-    'orders'=> OrderController::class,
-    'providers'=> ProviderController::class,
-    'services'=> ServiceController::class,
-
-    ]);
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::resource('clients',ClientController::class);
+Route::get('clients', [ClientController::class, 'index'])->name('clients.index');
+
+
+//Route::resource('invoices',InvoiceController::class);
+//Route::resource('orders',OrderController::class);
+//Route::resource('providers',ProviderController::class);
+//Route::resource('services',ServiceController::class);
+
+
+
+
